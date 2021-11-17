@@ -14,6 +14,10 @@ Right click a code block in vsc and create a notion block to a selected page.
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.2
+
+Add some languages (Markdown, C++, Java, PHP, ...)
+
+### 0.0.1
 
 Initial release of code-block-to-notion

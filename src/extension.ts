@@ -18,7 +18,6 @@ const FILETYPES:any = {
 	"js": "javascript",
 	"py": "python",
 	"html": "html",
-	"haml": "haml",
 	"rb": "ruby",
 	"css": "css",
 	"tex": "LaTeX",
@@ -27,9 +26,17 @@ const FILETYPES:any = {
 	"rs": "Rust",
 	"swift": "Swift",
 	"yml": "YAML",
+	"yaml": "YAML",
 	"sh": "Shell",
 	"c": "C",
-	"h": "C"
+	"cpp": "C++",
+	"h": "C",
+	"json": "JSON",
+	"java": "Java",
+	"md": "Markdown",
+	"ps1": "PowerShell",
+	"php": "PHP",
+	"txt": "Plain Text"
 };
 
 const appendCodeBlock = async (pageId: string, code: string, language: string) => {
