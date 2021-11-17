@@ -7,9 +7,6 @@ const notion = new Client({
 	auth: vscode.workspace.getConfiguration().get('code-block-to-notion.notionToken'),
 });
 const databaseId = vscode.workspace.getConfiguration().get('code-block-to-notion.databaseId');
-const titleTaskName = vscode.workspace.getConfiguration().get('code-block-to-notion.titleTaskName');
-const titleTaskDate = vscode.workspace.getConfiguration().get('code-block-to-notion.titleTaskDate');
-const pageTitle = vscode.workspace.getConfiguration().get('code-block-to-notion.pageTitle');
 const openByApp = vscode.workspace.getConfiguration().get('code-block-to-notion.openByApp');
 
 const FILETYPES:any = {
@@ -41,7 +38,7 @@ const FILETYPES:any = {
 
 const appendCodeBlock = async (pageId: string, code: string, language: string) => {
 	if (pageId === '') {
-		vscode.window.showErrorMessage('Pleage create today page');
+		vscode.window.showErrorMessage('Please create today page');
 		return;
 	}
 	if (code === '') {
@@ -73,31 +70,18 @@ const appendCodeBlock = async (pageId: string, code: string, language: string) =
 	return response;
 };
 
-async function getTodayPage() {
+async function getLastEditedPage() {
 	let myPage;
 	try {
-		var d = new Date();
-		d.setHours(0);
-		d.setMinutes(0);
-		d.setSeconds(0);
 		const lists = await notion.databases.query({
 			database_id: databaseId,
-			filter: {
-				and: [
-					{
-						property: titleTaskName,
-						text: {
-							starts_with: pageTitle,
-						},
-					},
-					{
-						property: titleTaskDate,
-						date: {
-							after: d.toISOString(),
-						},
-					},
-				],
-			},
+			sorts: [
+				{
+					timestamp: "last_edited_time",
+					direction: "descending"
+				},
+			],
+			page_size: 1
 		});
 		myPage = lists.results[0];
 	} catch (error) {
@@ -125,7 +109,7 @@ const logic = async (editor: vscode.TextEditor | undefined) => {
 			vscode.window.showErrorMessage('Please select a valid file');
 			return;
 		}
-		const myPage = await getTodayPage();
+		const myPage = await getLastEditedPage();
 		if (myPage === undefined) {
 			return;
 		}
