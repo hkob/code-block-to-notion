@@ -2,6 +2,11 @@
 
 All notable changes to the "code-block-to-notion" extension will be documented in this file.
 
+## [0.1.2] -2021-11-18
+## Added
+
+Add almost languages
+
 ## [0.1.1] -2021-11-18
 ## Fixed
 

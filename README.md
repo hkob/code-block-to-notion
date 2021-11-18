@@ -10,6 +10,10 @@ Right click a code block in vsc and create a notion block to a selected page.
 
 ## Release Notes
 
+### 0.1.2 (Add support)
+
+Add almost languages
+
 ### 0.1.1 (Bug fix)
 
 Fix language parameters (language parameters must not be Capital strings)
