@@ -2,7 +2,7 @@
 	"name": "code-block-to-notion",
 	"displayName": "code-block-to-notion",
 	"description": "Add code block to a Notion page",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"repository": {"type": "git" ,"url": "https://github.com/hkob/code-block-to-notion.git"},
 	"license": "MIT",
 	"engines": {

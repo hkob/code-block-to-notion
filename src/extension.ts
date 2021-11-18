@@ -17,23 +17,26 @@ const FILETYPES:any = {
 	"html": "html",
 	"rb": "ruby",
 	"css": "css",
-	"tex": "LaTeX",
-	"sty": "LaTeX",
-	"m": "MATLAB",
-	"rs": "Rust",
-	"swift": "Swift",
-	"yml": "YAML",
-	"yaml": "YAML",
-	"sh": "Shell",
-	"c": "C",
-	"cpp": "C++",
-	"h": "C",
-	"json": "JSON",
-	"java": "Java",
-	"md": "Markdown",
-	"ps1": "PowerShell",
-	"php": "PHP",
-	"txt": "Plain Text"
+	"tex": "latex",
+	"sty": "latex",
+	"m": "matlab",
+	"rs": "rust",
+	"swift": "swift",
+	"yml": "yaml",
+	"yaml": "yaml",
+	"sh": "shell",
+	"c": "c",
+	"cpp": "c++",
+	"h": "c",
+	"json": "json",
+	"java": "java",
+	"md": "markdown",
+	"ps1": "powershell",
+	"php": "php",
+	"elm": "elm",
+	"r": "r",
+	"pl": "perl",
+	"txt": "plain text"
 };
 
 const appendCodeBlock = async (pageId: string, code: string, language: string) => {
@@ -104,11 +107,7 @@ const logic = async (editor: vscode.TextEditor | undefined) => {
 			vscode.window.showErrorMessage('Please select a file');
 			return;
 		}
-		const language = FILETYPES[fileType];
-		if (language === undefined) {
-			vscode.window.showErrorMessage('Please select a valid file');
-			return;
-		}
+		const language = FILETYPES[fileType] || "plain text";
 		const myPage = await getLastEditedPage();
 		if (myPage === undefined) {
 			return;
