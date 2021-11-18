@@ -2,6 +2,20 @@
 
 Right click a code block in vsc and create a notion block to a selected page.
 
+## How to install using vsix package
+
+If you download `code-block-to-notion-x-y-z.vsix` file, please execute the following command.
+```
+code --install-extension code-block-to-notion-x.y.z.vsix
+```
+
+## How to build vsix package from source
+
+After setting up yarn environment, please execute the following command.
+```sh
+yarn vsce package
+```
+
 ## Extension Settings
 
 * `code-block-to-notion.notionToken`: notion Token
